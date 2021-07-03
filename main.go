@@ -1,26 +1,9 @@
 package main
 
 import (
-	"os"
-	"fmt"
-	"log"
-	"github.com/ChimeraCoder/anaconda"
+  "github.com/johnta0/goblockbastards/cmd"
 )
 
 func main() {
-	CK := os.Getenv("TW_CK")
-	CS := os.Getenv("TW_CS")
-	AT := os.Getenv("TW_AT")
-	AS := os.Getenv("TW_AS")
-	if CK == "" || CS == "" || AT == "" || AS == "" {
-		log.Fatal("Consumer key/secret and Access token/secret required")
-	}
-
-	anaconda.SetConsumerKey(CK)
-	anaconda.SetConsumerSecret(CS)
+  cmd.Execute()
 }
-
-func getBlockIds(api *anaconda.TwitterApi) {
-	
-}
-
