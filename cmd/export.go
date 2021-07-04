@@ -25,10 +25,12 @@ func export(cmd *cobra.Command, args []string) error {
 	anaconda.SetConsumerSecret(CS)
 	api := anaconda.NewTwitterApi(AT, AS)
 
+	fmt.Println("Getting block ids...")
 	ids, err := getBlockIds(api)
 	if err != nil { 
 		return fmt.Errorf("Error on getting block ids from Twitter: %s", err)
 	}
+	fmt.Println("Done!")
 
 	var outFile string
 	if len(args) == 0 {
@@ -37,10 +39,12 @@ func export(cmd *cobra.Command, args []string) error {
 		outFile = args[0]
 	}
 
+	fmt.Println("Exporting to file...")
 	err = exportIdsToFile(ids, outFile)
 	if err != nil {
 		return fmt.Errorf("Error exporting ids to file: %w", err)
 	}
+	fmt.Println("Export completed.")
 	return nil
 }
 
